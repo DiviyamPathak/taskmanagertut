@@ -6,7 +6,7 @@ const Button = props => {
   return (
     <button onClick = {props.onclick}>
       
-      <h1>{props.text}</h1>
+      <h3>{props.text}</h3>
     </button>
     
   )

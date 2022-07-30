@@ -1,20 +1,21 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-
+import Task from './Task'
 const Tasks = props => {
   return (
-      <div onClick={()=> console.log("div tasks component ckicked")}>
-          <h1>{props.tasknm}</h1>
-          <button >
-              del 
-          </button>
+      <div>
+        
+       {props.db.map((task) => <Task task={task} key={task.id} delfunction={props.delfunction} togglerem={props.togglerem}/>)}
+          
     </div>
   )
 }
 
 Tasks.propTypes = {
-  tasknm:PropTypes.string
-  
+  tasknm:PropTypes.string,
+  db:PropTypes.array,
+  delfunction:PropTypes.func,
+  togglerem:PropTypes.func
 }
 
 export default Tasks
