@@ -2,14 +2,18 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Button from './Button'
 const Task = props => {
+  let donei
+  (props.task.reminder) ? donei = (<p>done </p>): donei= (<p>not done</p>)
+
   return (
-    <div onClick={()=> props.togglerem(props.task.id)}>
+    <div onDoubleClick={()=> props.togglerem(props.task.id)}>
         <h3>
           {props.task.text}
 
         </h3>
         <p>{props.task.day}</p>
         <Button text="x" onclick={()=> props.delfunction(props.task.id)}/>
+        {donei}
     </div>
   )
 }

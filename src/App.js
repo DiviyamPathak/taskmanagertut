@@ -3,6 +3,7 @@ import './App.css';
 import Header from './components/Header';
 import Tasks from './components/Tasks';
 import { useState } from 'react';
+import Add from './components/Add';
 
 function App() {
   let [db , setDb]= useState([
@@ -21,17 +22,19 @@ function App() {
   ])
     
   const togglerem = (id) => {
-    setDb(db.map((task)=> task.id?{...task,reminder:!task.reminder}:task ))
+    setDb(db.map((task)=> task.id === id ?{...task,reminder:!task.reminder}:task ))
+    
   }
   
   
   const ondel = (id) => {
     setDb(db.filter((task)=>task.id !== id))
-    console.log(id , "hiop") 
+     
   }
   return (
     <div className="App">
       <Header name ="Task manager"/>
+      <Add/>
       <Tasks db={db} delfunction={ondel} togglerem={togglerem}/>
     </div>
   );
