@@ -26,6 +26,11 @@ function App() {
     
   }
   
+  const addtaskst = (taski) => {
+    const id = Math.floor(Math.random() * 10000) + 1
+    const newtask = {id, ...taski}
+    setDb([...db, newtask])
+  }
   
   const ondel = (id) => {
     setDb(db.filter((task)=>task.id !== id))
@@ -34,7 +39,7 @@ function App() {
   return (
     <div className="App">
       <Header name ="Task manager"/>
-      <Add/>
+      <Add onAdd={addtaskst}/>
       <Tasks db={db} delfunction={ondel} togglerem={togglerem}/>
     </div>
   );
